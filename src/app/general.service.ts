@@ -26,5 +26,10 @@ export class GeneralService {
    }
 
 
+  addUser(data: any) {
+     return this.http.post<any>(environment.baseUrl + "/user", data, this.httpOptions);  
+  }
+
+
 
 }

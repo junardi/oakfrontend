@@ -1,79 +1,76 @@
-<div class="header">
-	
-	<div class="container-fluid">
-		<div class="row">
-			
-			<div class="col-12">
-				<div class="header-content-div">
-					<img src="assets/images/logo-white.png" alt="Logo">
-					<div>
-						<h1>Student Organizational Leaders</h1>
-						<p>Management Information System</p>
-					</div>
-				</div>
+<h5 class="title"><strong>Add user</strong></h5>
+<hr>
+
+<form [formGroup]="addUserForm" (submit)="doAddUser()">
+	<div class="row">
+		
+		<div class="col-6">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input formControlName="username" type="text" class="form-control">
 			</div>
-	
 		</div>
+
+		<div class="col-6">
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input formControlName="password" type="password" class="form-control">
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input formControlName="firstName" type="text" class="form-control">
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input formControlName="lastName" type="text" class="form-control">
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="form-group">
+				<label for="position">Position</label>
+				<input formControlName="position" type="text" class="form-control">
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="form-group">
+				<label for="role">Role</label>
+				<input formControlName="role" type="text" class="form-control">
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="form-group">
+				<label for="gender">Gender</label>
+				<select formControlName="gender" class="form-control">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+			</div>
+		</div>
+
+		<!-- <div class="col-6">
+			<div class="form-group">
+				<label for="Birth Date">Birth Date</label>
+				<input formControlName="birthdate" type="date" class="form-control">
+			</div>
+		</div> -->
+
+		<div class="col-12 text-right">
+			<br>
+			<button class="btn btn-secondary" type="submit">Submit</button>
+		</div>
+
 	</div>
 
-</div>
-
-
-
-<div class="sidebar-content">
-	<ul>
-		<li><a class="active-link" href="">Dashboard</a></li>
-		<li><a href="">Organizations</a></li>
-		<li><a href="">Digital Archive</a></li>
-		<li><a href="">Student Database</a></li>
-		<li><a href="">Reports</a></li>
-		<li><a href="">Settings</a></li>
-		<li><a href="">Logout</a></li>
-	</ul>
-</div>
-
-
-<!-- <div class="main-content-container">
-	
-	<div class="container-fluid">
-		
-		<div class="row">
-			
-			<div class="col-3 p-0">
-				
-				<div class="sidebar-content">
-					
-					<ul>
-						<li><a href="">Dashboard</a></li>
-						<li><a href="">Organizations</a></li>
-						<li><a href="">Digital Archive</a></li>
-						<li><a href="">Student Database</a></li>
-						<li><a href="">Reports</a></li>
-						<li><a href="">Settings</a></li>
-						<li><a href="">Logout</a></li>
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div class="col-9">
-				
-				<div class="main-content">
-					<h3>Welcome User</h3>
-					<p>Today is</p>
-				</div>
-
-
-			</div>
-
-		</div>
-
-
-
-	</div>	
-
-</div> -->
+</form>
 
 
 
@@ -91,20 +88,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
