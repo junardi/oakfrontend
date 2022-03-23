@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GeneralService } from '../general.service'   
+import { GeneralService } from '../../general.service'   
 
+declare var require: any;
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+
+   file: any = null; 
 
    constructor(private general: GeneralService) { }
 
@@ -48,14 +51,50 @@ export class HomepageComponent implements OnInit {
          //birthdate: this.birthdate.value
       };
    
-
       console.log(dataObj);
-
       this.general.addUser(dataObj).subscribe(data => {
          console.log(data);
       });
 
    }
+
+
+   onChange(event: any) {
+      this.file = event.target.files[0];
+   }
+
+
+   doUpload() {
+    
+      //console.log(this.file);
+
+      this.general.upload(this.file).subscribe(data => {
+         console.log(data);
+      });
+
+
+   }
+
+
+   doDownload() {
+
+     
+      
+      this.general.download().subscribe(data => {
+         //console.log(data);
+
+         let FileSaver = require('file-saver');
+
+         const blob: any = new Blob([data], { type: 'application/pdf' });
+
+         FileSaver.saveAs(blob, "roadmap.pdf");
+     
+
+      });
+
+
+   }
+
 
 
 }

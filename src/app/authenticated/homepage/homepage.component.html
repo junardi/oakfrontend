@@ -73,6 +73,31 @@
 </form>
 
 
+<br>
+<hr>
+
+
+<form>
+	
+	<div class="row">
+		
+		<div class="col-6">
+			
+			<div class="form-group">
+				<input type="file" enctype="multipart/form-data" class="form-control" (change)="onChange($event)">                                    
+			</div>
+
+			<button (click)="doUpload()">Upload</button>
+			<button (click)="doDownload()">Download</button>
+
+		</div>
+	</div>
+
+</form>
+
+
+
+
 
 
 
