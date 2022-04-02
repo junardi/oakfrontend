@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Below is for the header */
 
+
+/* Below is for the header */
 
 .form-control:focus {
 	box-shadow: none !important;   
@@ -48,14 +49,14 @@
 /* Below is for the sidebar content  */
 
 .sidebar-content {
-	border-right: 2px solid #f79659;
+	border-right: 1px solid #f79659;
 	position: fixed;
 	width: 300px;
 	top: 0px;
 	left: 0px;
 	z-index: 1;
 	height: 100%;
-	padding-top: 115px;
+	padding-top: 116px;
 }
 
 .sidebar-content ul {
@@ -68,7 +69,7 @@
 	font-size: 18px;
 	display: block;
 	width: 100%;
-	border-bottom: 2px solid #f79659;
+	border-bottom: 1px solid rgba(247, 150, 89, 0.5);
 	padding: 20px;
 	font-weight: bold;
 }
@@ -83,6 +84,10 @@
 	background-color: #fd7a2c;
 }
 
+
+.sidebar-content ul li:last-child a {
+	border-bottom: 0px;
+}
 
 /* Below for the main content */
 

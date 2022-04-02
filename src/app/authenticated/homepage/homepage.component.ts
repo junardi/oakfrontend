@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GeneralService } from '../../general.service'   
+import { GeneralService } from '../../general.service';   
 
 declare var require: any;
 @Component({

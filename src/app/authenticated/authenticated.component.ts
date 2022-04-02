@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authenticated',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticatedComponent implements OnInit {
 
-  constructor() { }
+   constructor(
+      private auth: AuthService, 
+      private router: Router 
+   ) { }
 
-  ngOnInit(): void {
-  }
+   ngOnInit(): void {
+   }
+
+   logOut() {
+      this.auth.clearStorageData();
+      this.router.navigateByUrl('/login');
+   }
 
 }

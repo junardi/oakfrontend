@@ -34,7 +34,6 @@ export class GeneralService {
 
    upload(file: any) {
 
-
       // console.log(file);
       // console.log(file.name);
      
@@ -64,7 +63,67 @@ export class GeneralService {
    }
 
 
+   uploadFile(formData: any) {
+
+      // const newOption = {
+      //    headers: new HttpHeaders({
+      //       'Content-Type': 'multipart/form-data'
+      //    })
+      // };
+
+      return this.http.post<any>(environment.baseUrl + "/file-upload", formData);
+
+   }
+
+
+   getFiles(data: any) {
+      return this.http.post<any>(environment.baseUrl + "/get-files", data, this.httpOptions);                   
+   }
+
+   downloadFile(id: number):Observable<Blob> {
+      
+     
+      const requestOptions: Object = {
+        
+         responseType: 'blob',
+
+      };   
+
+      return this.http.get<any>(environment.baseUrl + "/download-file/" + id , requestOptions);                                               
+   }
+
+
+   deleteFile(id: number) {
+      return this.http.delete<any>(environment.baseUrl + "/delete-file/" + id , this.httpOptions);                                               
+   }
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
