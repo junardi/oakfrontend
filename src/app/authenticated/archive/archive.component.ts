@@ -48,12 +48,14 @@ export class ArchiveComponent implements OnInit {
       this.general.uploadFile(formData).subscribe(res => {
          //console.log(res);
          this.getFiles();
-         Swal.fire({
-           title: 'Success',
-           text: 'Data processed successfully',
-           icon: 'success',
-           confirmButtonText: 'Cool'
-         })
+         // Swal.fire({
+         //   title: 'Success',
+         //   text: 'Data processed successfully',
+         //   icon: 'success',
+         //   confirmButtonText: 'Cool'
+         // })
+
+         location.reload();
       });
 
    }
