@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralService } from '../../general.service'; 
 import { AuthService } from '../../auth.service';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import Fuse from 'fuse.js'
+import Swal from 'sweetalert2';
 
 declare var require: any;
 
@@ -13,12 +17,17 @@ declare var require: any;
 export class ArchiveComponent implements OnInit {
 
    files: any = [];
-   
+
+   @ViewChild('search', { static: false }) search: ElementRef<any>;
+
 
    constructor(
       private general: GeneralService,
-      private auth: AuthService 
-   ) { }
+      private auth: AuthService,
+      private elementRef: ElementRef
+   ) {
+      this.search = elementRef;
+   }
 
 
    ngOnInit(): void {
@@ -27,6 +36,8 @@ export class ArchiveComponent implements OnInit {
 
    onChange(event: any) {
       //console.log(event);
+
+      
       let file = event.target.files[0];
       const formData = new FormData(); 
 
@@ -37,6 +48,12 @@ export class ArchiveComponent implements OnInit {
       this.general.uploadFile(formData).subscribe(res => {
          //console.log(res);
          this.getFiles();
+         Swal.fire({
+           title: 'Success',
+           text: 'Data processed successfully',
+           icon: 'success',
+           confirmButtonText: 'Cool'
+         })
       });
 
    }
@@ -49,6 +66,8 @@ export class ArchiveComponent implements OnInit {
 
       this.general.getFiles(data).subscribe(res => {
          this.files = res.data;
+
+         //console.log(this.files);
       });
    }
 
@@ -74,6 +93,50 @@ export class ArchiveComponent implements OnInit {
             this.getFiles();
          }
       });
+   }
+
+   doSearch() {
+      console.log("lets do search");
+   }
+
+   ngAfterViewInit() {
+     
+      //console.log("Hello World.");
+
+      const searchKeyup = fromEvent(this.search.nativeElement, 'keyup');
+      searchKeyup.pipe(debounceTime(500)).subscribe(res => {
+
+         let searchResult: any[] = [];
+        
+         let searchValue = this.search.nativeElement.value.trim();
+
+         console.log(searchValue);
+
+         if(searchValue != '') {
+            
+            const options = {
+              includeScore: true,
+              threshold: 0.3,
+              keys: ['content_type', 'original_name']
+            }
+
+            const fuse = new Fuse(this.files, options);
+            const result = fuse.search(searchValue);
+
+            result.filter((element, index) => {
+               searchResult.push(element.item);
+            }); 
+
+         
+            this.files = searchResult;
+
+         } else {
+            this.getFiles();
+         }
+         
+
+      });
+   
    }
 
 

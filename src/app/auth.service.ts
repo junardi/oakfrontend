@@ -47,6 +47,11 @@ export class AuthService {
       return loginData.id;
    }
 
+   getCurrentUsername() {
+      const loginData = JSON.parse(this.getLoginData());
+      return loginData.username;
+   }
+
 
 }
 

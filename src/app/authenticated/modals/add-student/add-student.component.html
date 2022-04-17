@@ -1,0 +1,211 @@
+<div class="modal-header">
+	<h4 *ngIf="!isUpdate" class="modal-title">Add Student</h4>
+	<h4 *ngIf="isUpdate" class="modal-title">Update Student</h4>
+	<!-- <button type="button" class="btn btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button> -->
+</div>
+
+<div class="modal-body">
+	
+	<form [formGroup]="studentForm">
+		<div class="row">
+			<div class="col-4">
+				<div class="form-group">
+					<label>Last Name *</label>
+					<input formControlName="lastName" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>First Name *</label>
+					<input formControlName="firstName" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>Middle Name *</label>
+					<input formControlName="middleName" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="form-group">
+					<label>ID Number *</label>
+					<input formControlName="idNumber" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="form-group">
+					<label>DepEd Learner Resource Number (LRN) *</label>
+					<input formControlName="lrn" type="text" class="form-control">
+				</div>
+			</div>
+
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>Course *</label>
+					<select class="form-control" formControlName="course">
+						<option value=""></option>
+						<option *ngFor="let course of courses" value="{{course.id}}">{{course.name}}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>Current Year Level *</label>
+					<select formControlName="currentYearLevel" class="form-control">
+						<option value=""></option>
+						<option *ngFor="let level of yearLevels" value="{{level.id}}">{{level.name}}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>Section *</label>
+					
+					<select formControlName="section" class="form-control">
+						<option value=""></option>
+						<option *ngFor="let sec of sections" value="{{sec.id}}">{{sec.name}}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>Sex *</label>
+					<select formControlName="sex" class="form-control">
+						<option value=""></option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>Gender *</label>
+					<select formControlName="gender" class="form-control">
+						<option value=""></option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Lesbian">Lesbian</option>
+						<option value="Gay">Gay</option>
+						<option value="Bisexual Transgender">Bisexual Transgender</option>
+						<option value="Queer">Queer</option>
+						<option value="Intersex">Intersex</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="form-group">
+					<label>Civil Status *</label>
+					<input formControlName="civilStatus" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="form-group">
+					<label>Address (Street, Barangay, City/Municipality, Province) *</label>
+					<input formControlName="address" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="form-group">
+					<label>Mother's Maiden Name (Last Name, First Name, Middle Name) *</label>
+					<input formControlName="mothersMaidenName" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="form-group">
+					<label>Father's Name (Last Name, First Name, Middle Name) *</label>
+					<input formControlName="fathersName" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="form-group">
+					<label>Member of IPs? (Yes, No; if Yes, state tribe) *</label>
+					<select formControlName="isMemberOfIps" class="form-control">
+						<option value=""></option>
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="form-group">
+					<label>Tribe</label>
+					<input formControlName="tribe" type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="form-group">
+					<label>with Disabilities or Special Needs (Yes, No) *</label>
+					<select formControlName="withDisability" class="form-control">
+						<option value=""></option>
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="form-group">
+					<label>Organization</label>
+					<select formControlName="organization" class="form-control">
+						<option value=""></option>
+						<option *ngFor="let org of organizations" value="{{org.id}}">{{org.name}}</option>
+					</select>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</form>
+
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark" (click)="activeModal.close(false)">Cancel</button>
+	<button type="button" *ngIf="!isUpdate" [disabled]="studentForm.invalid" (click)="addStudent()" class="btn btn-orange">Add Student</button>
+	<button type="button" *ngIf="isUpdate" [disabled]="studentForm.invalid" (click)="updateStudent()" class="btn btn-orange">Update Student</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

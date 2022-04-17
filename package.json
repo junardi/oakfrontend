@@ -20,10 +20,13 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "angular-digital-clock": "^0.3.4",
     "bootstrap": "^4.6.1",
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
+    "fuse.js": "^6.5.3",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

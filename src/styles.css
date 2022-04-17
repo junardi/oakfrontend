@@ -110,14 +110,49 @@
 }
 
 
+.btn-orange {
+	background-color: #fd7a2c;
+	color: #FFFFFF;
+}
+
+.btn-orange:hover {
+	color: #FFFFFF;
+}
 
 
+.digital-clock-box {
+	margin: 0px !important;
+	background-image: none !important;
+	background-color: transparent !important;
+}
 
+.digital-clock-box .digital-clock-wrapper {
+	background-color: transparent !important;
+}
 
+.digital-clock-box h2 {
+	display: none !important;
+}
 
+.digital-clock-box h3 {
+	color: #000000 !important;
+}
 
+.digital-clock-box .digital-clock-wrapper .digital-clock-holder .am-pm-holder .pm-am {
+	color: #000000 !important;
+}
 
+.digital-clock-box .double-dot {
+	color: #fd7a2c !important; 
+}
 
+.version-text {
+	display: none !important;
+}
+
+.digit-box-holder .time-box .time {
+	color: #fd7a2c !important; 
+}
 
 
 

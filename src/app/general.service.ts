@@ -98,6 +98,39 @@ export class GeneralService {
    }
 
 
+   addStudent(data: any) {
+      return this.http.post<any>(environment.baseUrl + "/add-student/", data, this.httpOptions)
+   }
+
+
+   getCourses() {
+      return this.http.post<any>(environment.baseUrl + "/get-courses", this.httpOptions);
+   }
+
+   getYearLevels() {
+      return this.http.post<any>(environment.baseUrl + "/get-year-levels", this.httpOptions);                              
+   }
+
+   getSections() {
+      return this.http.post<any>(environment.baseUrl + "/get-sections", this.httpOptions);                              
+   }
+
+   getStudents() {
+      return this.http.post<any>(environment.baseUrl + "/get-students", this.httpOptions);                                                           
+   }
+
+   deleteStudent(id: number) {
+      return this.http.delete<any>(environment.baseUrl + "/delete-student/" + id , this.httpOptions);                                                
+   }
+
+   updateStudent(data: any, id: number) {
+      return this.http.put<any>(environment.baseUrl + "/update-student/" + id, data, this.httpOptions);                                                     
+   }
+
+
+   getOrganizations() {
+      return this.http.post<any>(environment.baseUrl + "/get-organizations", this.httpOptions);                              
+   }
 
 
 

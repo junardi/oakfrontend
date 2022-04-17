@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
          if(res.success) {
             this.auth.setLoginData(res.data);
 
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/dashboard');
 
          } else {
             this.loginForm.reset();

@@ -1,0 +1,89 @@
+<button type="button" (click)="open()" class="btn btn-orange mb-5">Add Student</button>                     
+
+
+<div class="container">
+	<div class="row">
+		
+		<div class="col-6">
+			<div class="form-group">
+				<input #search type="text" placeholder="Search Last Name or First Name" class="form-control">
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="form-group">
+				<select [(ngModel)]="selectedOrg" (change)="changeFilter()" class="form-control">
+					<option value="">All Organizations</option>
+					<option *ngFor="let org of organizations" value="{{org.id}}">{{org.name}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="col-12">
+			
+			<div class="table-responsive">
+  
+				<table class="table students-table">
+					
+					<thead>
+						<tr>
+							
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Organization</th>
+							<th>Middle Name</th>
+							<th>ID Number</th>
+							<th>LRN</th>
+							<th>Course</th>
+							<th>Current Year Level</th>
+							<th>Section</th>
+							<th>Sex</th>
+							<th>Gender</th>
+							<th>Civil Status</th>
+							<th>Address</th>
+							<th>Mother's Maiden Name</th>
+							<th>Father's Name</th>
+							<th>Member of IPs?</th>
+							<th>Tribe</th>
+							<th>With Disabilities or Special Needs</th>
+							
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let stud of students">
+							<td>{{stud.last_name}}</td>
+							<td>{{stud.first_name}}</td>
+							<td>{{getOrganizationName(stud.organization)}}</td>
+							<td>{{stud.middle_name}}</td>
+							<td>{{stud.id_number}}</td>
+							<td>{{stud.lrn}}</td>
+							<td>{{getCourseName(stud.course)}}</td>
+							<td>{{getYearLevelName(stud.current_year_level)}}</td>
+							<td>{{getSectionName(stud.section)}}</td>
+							<td>{{stud.sex}}</td>
+							<td>{{stud.gender}}</td>
+							<td>{{stud.civil_status}}</td>
+							<td>{{stud.address}}</td>
+							<td>{{stud.mothers_maiden_name}}</td>
+							<td>{{stud.fathers_name}}</td>
+							<td>{{stud.is_member_of_ips}}</td>
+							<td>{{stud.tribe}}</td>
+							<td>{{stud.with_disability}}</td>
+							
+							<td (click)="editStudent(stud)" class="edit">Edit</td>
+							<td (click)="deleteStudent(stud.id)" class="delete">Delete</td>
+						</tr>
+						
+						
+					</tbody>
+
+				</table>
+
+			</div>
+		</div> <!-- end col 12 -->
+	
+	</div>
+</div>
+

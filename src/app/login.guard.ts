@@ -20,7 +20,7 @@ export class LoginGuard implements CanActivate {
    
       const loginData = JSON.parse(this.auth.getLoginData());
       if(loginData) {
-         this.router.navigateByUrl('/');
+         this.router.navigateByUrl('/dashboard');
       }
       return true;
    
