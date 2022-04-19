@@ -29,6 +29,9 @@ export class StudentDatabaseComponent implements OnInit {
 
    searchResults: any[] = [];
 
+   currentUserRole: any;
+   currentUserOrgId: any;
+
    @ViewChild('search', { static: false }) search: ElementRef<any>;
 
 
@@ -43,6 +46,11 @@ export class StudentDatabaseComponent implements OnInit {
 
    ngOnInit(): void {
 
+      
+      this.currentUserRole = this.auth.getCurrentRole();
+      this.currentUserOrgId = Number(this.auth.getCurrentOrgId());
+
+   
       this.general.getCourses().subscribe(res => {
          if(res.data && res.data.length) {
             this.courses = res.data;
@@ -64,7 +72,19 @@ export class StudentDatabaseComponent implements OnInit {
 
       this.general.getOrganizations().subscribe(res => {
          if(res.data && res.data.length) {
-            this.organizations = res.data;
+            
+            if(this.currentUserOrgId) {
+               this.organizations = res.data.filter((item: any) => {
+                  if(item.id == this.currentUserOrgId) {
+                     return item;
+                  }
+               });
+            } else {
+               this.organizations = res.data;
+            }
+
+           
+
          }
       });
 
@@ -119,10 +139,11 @@ export class StudentDatabaseComponent implements OnInit {
          
          if(res.data && res.data.length) {
             
+            let students = res.data;
+
             if(this.selectedOrg != '') {
 
-               console.log(this.selectedOrg);
-               this.students = res.data.filter((elem: any) =>{
+               students = students.filter((elem: any) =>{
                   
                   // console.log(elem);
                   // return elem;
@@ -130,11 +151,21 @@ export class StudentDatabaseComponent implements OnInit {
                      return elem;
                   }
                })
-            } else {
-               this.students = res.data;
+            } 
+
+
+            if(this.currentUserOrgId) {
+               students = students.filter((elem: any) => {
+                  if(elem.organization == this.currentUserOrgId) {
+                     return this.currentUserOrgId;
+                  }
+               });
             }
 
-            console.log(this.students);
+
+            this.students = students;
+
+            
          }
       
       });
@@ -187,25 +218,14 @@ export class StudentDatabaseComponent implements OnInit {
          
          location.reload();
 
-         //this.getStudents();
-
-         // console.log(res);
+        
          // if(res.success) {
          //    this.getStudents();
          // } else {  
          //    alert("Error deleting.");
          // }
 
-         // this.general.getStudents().subscribe(res => {
-         
-         //    if(res.data && res.data.length) {
-         //       this.students = res.data;
-         //       //console.log(this.students);
-
-         //       console.log(this.students);
-         //    }
-            
-         // });
+        
       });
    }
 

@@ -72,6 +72,7 @@
 	border-bottom: 1px solid rgba(247, 150, 89, 0.5);
 	padding: 20px;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .sidebar-content ul li a:hover {

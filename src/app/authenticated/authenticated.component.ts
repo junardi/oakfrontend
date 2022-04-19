@@ -9,12 +9,18 @@ import { Router } from '@angular/router';
 })
 export class AuthenticatedComponent implements OnInit {
 
+   currentUserRole: any;
+   currentUserOrgId: any;
+
    constructor(
       private auth: AuthService, 
       private router: Router 
    ) { }
 
    ngOnInit(): void {
+
+      this.currentUserRole = this.auth.getCurrentRole();
+      this.currentUserOrgId = Number(this.auth.getCurrentOrgId());
    }
 
    logOut() {

@@ -25,6 +25,7 @@
     <li><a [routerLink]="['/organizations']" routerLinkActive="active-link"><i class="fa fa-sitemap" aria-hidden="true"></i> Organizations</a></li>                                
     <li><a [routerLink]="['/archive']" routerLinkActive="active-link"><i class="fa fa-archive" aria-hidden="true"></i> Digital Archive</a></li>
     <li><a [routerLink]="['/student-database']" routerLinkActive="active-link"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Student Database</a></li>                                                       
+    <li *ngIf="currentUserRole == 'admin'"><a [routerLink]="['/users']" routerLinkActive="active-link"><i class="fa fa-user" aria-hidden="true"></i> Users</a></li>                                                       
     <!-- <li><a [routerLink]="['/reports']" routerLinkActive="active-link"><i class="fa fa-flag" aria-hidden="true"></i> Reports</a></li>
     <li><a [routerLink]="['/settings']" routerLinkActive="active-link"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li> -->
     <li><a onclick="return false;" (click)="logOut()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>

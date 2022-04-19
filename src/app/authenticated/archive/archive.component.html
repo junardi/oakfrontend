@@ -13,7 +13,7 @@
                         </div>
                      </div>
                   </div>
-                  <!--upload-content--> <input type="file" id="file_upload" (change)="onChange($event)" class="image-input">
+                  <!--upload-content--> <input type="file" #fileUpload id="file_upload" (change)="onChange($event)" class="image-input">
                   </label> 
                </div>
             </div>
@@ -52,8 +52,9 @@
                            <tr>
                               <th>File Type</th>
                               <th>File Name</th>
-                              <th></th>
-                              <th></th>
+                              <th>Created</th>
+                              <th *ngIf="currentUserRole != 'user'"></th>
+                              <th *ngIf="currentUserRole != 'user'"></th>
 
                            </tr>
                         </thead>
@@ -61,8 +62,9 @@
                            <tr *ngFor="let file of files">
                               <td>{{file.content_type}}</td>
                               <td>{{file.original_name}}</td>
-                              <td class="delete" (click)="deleteFile(file.id)">Delete</td>
-                              <td class="download" (click)="doDownload(file.id, file.content_type, file.original_name)">Download</td>                                              
+                              <td>{{file.created | date:'medium'}}</td>
+                              <td *ngIf="currentUserRole != 'user'" class="delete" (click)="deleteFile(file.id)">Delete</td>
+                              <td *ngIf="currentUserRole != 'user'" class="download" (click)="doDownload(file.id, file.content_type, file.original_name)">Download</td>                                              
                            </tr>
                         </tbody>
                      </table>

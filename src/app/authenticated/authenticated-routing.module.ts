@@ -8,6 +8,7 @@ import { OrganizationsComponent } from './organizations/organizations.component'
 import { StudentDatabaseComponent } from './student-database/student-database.component';  
 import { ReportsComponent } from './reports/reports.component';    
 import { SettingsComponent } from './settings/settings.component'; 
+import { UserComponent } from './user/user.component';   
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent 
+      },
+      {
+        path: 'users',
+        component: UserComponent 
       }
     ]
   }

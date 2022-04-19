@@ -133,6 +133,28 @@ export class GeneralService {
    }
 
 
+   addOrganization(data: any) {
+      return this.http.post<any>(environment.baseUrl + "/add-organization/", data, this.httpOptions)
+   }
+
+   updateOrganization(data: any, id: any) {
+      return this.http.put<any>(environment.baseUrl + "/update-organization/" + id, data, this.httpOptions);                                                     
+   }
+
+
+   deleteOrganization(id: number) {
+      return this.http.delete<any>(environment.baseUrl + "/delete-organization/" + id , this.httpOptions);                                                
+   }
+
+
+   getUsers(data: any) {
+      return this.http.post<any>(environment.baseUrl + "/get-users", data, this.httpOptions);                              
+   }
+
+
+   addNewUser(data: any) {
+      return this.http.post<any>(environment.baseUrl + "/add-user", data, this.httpOptions);  
+   }
 
 
 }

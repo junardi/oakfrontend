@@ -52,6 +52,21 @@ export class AuthService {
       return loginData.username;
    }
 
+   getCurrentFullname() {
+      const loginData = JSON.parse(this.getLoginData());
+      return loginData.fullname;
+   }
+
+   getCurrentOrgId() {
+      const loginData = JSON.parse(this.getLoginData());
+      return loginData.organization_id;
+   }
+
+   getCurrentRole() {
+      const loginData = JSON.parse(this.getLoginData());
+      return loginData.role;
+   }
+
 
 }
 

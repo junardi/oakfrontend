@@ -10,3 +10,12 @@ ul {
 ul li {
 	line-height: 35px;
 }
+
+ul li span {
+	color: red;
+	border: 1px solid red;
+	border-radius: 2px;
+	margin-left:  10px;
+	padding: 5px;
+	cursor: pointer;
+}

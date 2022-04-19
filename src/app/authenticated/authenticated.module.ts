@@ -11,7 +11,8 @@ import { OrganizationsComponent } from './organizations/organizations.component'
 import { StudentDatabaseComponent } from './student-database/student-database.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SettingsComponent } from './settings/settings.component';
-import { AddStudentComponent } from './modals/add-student/add-student.component';         
+import { AddStudentComponent } from './modals/add-student/add-student.component';
+import { UserComponent } from './user/user.component';         
 
 
 
@@ -25,7 +26,8 @@ import { AddStudentComponent } from './modals/add-student/add-student.component'
     StudentDatabaseComponent,
     ReportsComponent,
     SettingsComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

@@ -19,6 +19,12 @@ export class ArchiveComponent implements OnInit {
    files: any = [];
 
    @ViewChild('search', { static: false }) search: ElementRef<any>;
+   @ViewChild('fileUpload', { static: false }) fileUpload: ElementRef<any>;
+
+
+   currentUserRole: any;
+   currentUserOrgId: any;
+
 
 
    constructor(
@@ -27,15 +33,20 @@ export class ArchiveComponent implements OnInit {
       private elementRef: ElementRef
    ) {
       this.search = elementRef;
+      this.fileUpload = elementRef;
    }
 
 
    ngOnInit(): void {
+
+      this.currentUserRole = this.auth.getCurrentRole();
+      this.currentUserOrgId = Number(this.auth.getCurrentOrgId());
+      
       this.getFiles();
    }
 
    onChange(event: any) {
-      //console.log(event);
+      console.log(event);
 
       
       let file = event.target.files[0];
@@ -45,17 +56,21 @@ export class ArchiveComponent implements OnInit {
       formData.append("file", file);
       formData.append("user_id", this.auth.getCurrentUserId());
 
+      console.log(formData);
+
       this.general.uploadFile(formData).subscribe(res => {
          //console.log(res);
          this.getFiles();
-         // Swal.fire({
-         //   title: 'Success',
-         //   text: 'Data processed successfully',
-         //   icon: 'success',
-         //   confirmButtonText: 'Cool'
-         // })
+         Swal.fire({
+           title: 'Success',
+           text: 'Data processed successfully',
+           icon: 'success',
+           confirmButtonText: 'Cool'
+         })
 
-         location.reload();
+         this.fileUpload.nativeElement.value = "";
+
+         //location.reload();
       });
 
    }
